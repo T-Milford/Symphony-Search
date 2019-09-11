@@ -1,3 +1,5 @@
+
+
 $('.form').submit(event => {
     event.preventDefault();
     $('.content').empty();
@@ -8,7 +10,7 @@ $('.form').submit(event => {
   // function sends "query" to three formatting
   function formatQueries(input) {
     youTubeFormatter(input);
-    // wikiFormatter(input);
+    wikiFormatter(input);
     // museScoreFormatter(input);
   }
 
@@ -19,7 +21,7 @@ $('.form').submit(event => {
       q: `${input}`,
       part: "snippet",
       type: "video",
-      maxresults: 5,
+      maxResults: 3,
       key: apiKey,
       order: "rating"
     }
@@ -47,12 +49,22 @@ $('.form').submit(event => {
 
   // function updates page using YouTube JSON object
   function YouTubeDisplayer(json) {
-    for (i = 0; i < json.items.length; i++)
+    for (i = 0; i < json.items.length; i++) {
       var id = json.items[i].id.videoId;
+      // document.addEventListener('touchstart', onTouchStart, {passive: true}); this solution doesn't work?
       $('.content').append(`<iframe width="400" height="300" src="https://www.youtube.com/embed/${id}"></iframe><br>`)
       console.log(id);
+    }
   }
 
-  // <iframe width="400" height="300" src="https://www.youtube.com/embed/${id}"></iframe>
+wikiFormatter(input) {
+  const params = {
+    format: "json",
+    action: "query",
+    prop: "extracts",
+    explaintext: "asfsdf",
+    exintro: "asdfasdf",
+    redirects: "asdf"
+  };
+}
 
-  // let videoId = ${json.items[i].id.videoId};
