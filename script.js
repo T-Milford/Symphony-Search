@@ -53,18 +53,43 @@ $('.form').submit(event => {
       var id = json.items[i].id.videoId;
       // document.addEventListener('touchstart', onTouchStart, {passive: true}); this solution doesn't work?
       $('.content').append(`<iframe width="400" height="300" src="https://www.youtube.com/embed/${id}"></iframe><br>`)
-      console.log(id);
     }
   }
 
-wikiFormatter(input) {
+function wikiFormatter(input) {
   const params = {
+    titles: `${input}`,
     format: "json",
     action: "query",
     prop: "extracts",
-    explaintext: "asfsdf",
-    exintro: "asdfasdf",
-    redirects: "asdf"
-  };
+    exlimit: "max",
+    // explaintext, exintro, redirects=
+  }; 
+  
+  const baseWikiUrl = 'https://en.wikipedia.org/w/api.php?explaintext&exintro&redirects&'
+  const queryWikiUrl = Object.keys(params).map
+    (key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`).join('&');
+  const finalWikiUrl = baseWikiUrl + queryWikiUrl
+  wikiFetcher(finalWikiUrl);
 }
 
+function wikiFetcher(wikiUrl) {
+  console.log(wikiUrl);
+  fetch(wikiUrl)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error (response.statusText);
+    })
+    .then (responseJson => wikiDisplayer(responseJson))
+    .catch(err => {
+      $('.content').text(`Something went wrong: ${err.message}`)
+    })
+}
+
+function wikiDisplayer(json) {
+  console.log(json);
+}
+
+// Current problem: Wiki query only sometimes returns results.  "Brahms Clarinet Quintet" will not return anything, even though there is an article titled "Clarinet Quintet (Brahms)" on WikiPedia.  Perhaps need to find article ID first?  It seems like "redirects" should be fixing this.
