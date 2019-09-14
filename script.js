@@ -57,18 +57,22 @@ $('.form').submit(event => {
   }
 
 function wikiFormatter(input) {
-  const params = {
-    titles: `${input}`,
-    format: "json",
-    action: "query",
-    prop: "extracts",
-    exlimit: "max",
+  // const params = {
+  //   titles: `${input}`,
+  //   format: "json",
+  //   action: "query",
+  //   prop: "extracts",
+  //   exlimit: "max",
+  //   origin: "*"
     // explaintext, exintro, redirects=
-  }; 
+// }; 
   
-  const baseWikiUrl = 'https://en.wikipedia.org/w/api.php?explaintext&exintro&redirects&'
-  const queryWikiUrl = Object.keys(params).map
-    (key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`).join('&');
+  queryWikiUrl = input.replace(/ /g, "_");
+
+  // const baseWikiUrl = 'https://en.wikipedia.org/w/api.php?explaintext&exintro&redirects=1&'
+  const baseWikiUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/'
+  // const queryWikiUrl = Object.keys(params).map
+  //   (key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`).join('&');
   const finalWikiUrl = baseWikiUrl + queryWikiUrl
   wikiFetcher(finalWikiUrl);
 }
@@ -89,7 +93,15 @@ function wikiFetcher(wikiUrl) {
 }
 
 function wikiDisplayer(json) {
-  console.log(json);
+  let wikiSummary = json.extract;
+  $('.content').append(`<p>${wikiSummary}</p>`)
 }
 
-// Current problem: Wiki query only sometimes returns results.  "Brahms Clarinet Quintet" will not return anything, even though there is an article titled "Clarinet Quintet (Brahms)" on WikiPedia.  Perhaps need to find article ID first?  It seems like "redirects" should be fixing this.
+
+//Use THIS instead: https://en.wikipedia.org/api/rest_v1/page/summary/
+// To do: 1) two inputs from user: Composer and name of piece
+// All words MUST be capitalized.
+// Composer MUST be in parenthesis and MUST be after piece (unless specific name like "Well Tempered Clavier", which worked)
+
+// Problem: above format doesn't work for all pieces.  ex String_Quartet_1_Beethoven
+// Problem: some videos from YouTube won't play after being loaded
