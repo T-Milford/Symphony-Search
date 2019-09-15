@@ -9,8 +9,8 @@ $('.form').submit(event => {
 
   // function sends "query" to three formatting
   function formatQueries(input) {
-    youTubeFormatter(input);
     wikiFormatter(input);
+    youTubeFormatter(input);
     // museScoreFormatter(input);
   }
 
@@ -51,7 +51,6 @@ $('.form').submit(event => {
   function YouTubeDisplayer(json) {
     for (i = 0; i < json.items.length; i++) {
       var id = json.items[i].id.videoId;
-      // document.addEventListener('touchstart', onTouchStart, {passive: true}); this solution doesn't work?
       $('.content').append(`<iframe width="400" height="300" src="https://www.youtube.com/embed/${id}"></iframe><br>`)
     }
   }
@@ -88,20 +87,30 @@ function wikiFetcher(wikiUrl) {
     })
     .then (responseJson => wikiDisplayer(responseJson))
     .catch(err => {
-      $('.content').text(`Something went wrong: ${err.message}`)
+      $('.content').text(`No results. Try entering your request differently.`)
     })
 }
 
 function wikiDisplayer(json) {
+  console.log(json);
   let wikiSummary = json.extract;
-  $('.content').append(`<p>${wikiSummary}</p>`)
+  let wikiTitle = json.titles.display;
+  $('.content').append(`<h1>${wikiTitle}</h1>`)
+  $('.content').append(`<p>${wikiSummary}</p>`)  
 }
 
 
-//Use THIS instead: https://en.wikipedia.org/api/rest_v1/page/summary/
-// To do: 1) two inputs from user: Composer and name of piece
-// All words MUST be capitalized.
-// Composer MUST be in parenthesis and MUST be after piece (unless specific name like "Well Tempered Clavier", which worked)
 
-// Problem: above format doesn't work for all pieces.  ex String_Quartet_1_Beethoven
-// Problem: some videos from YouTube won't play after being loaded
+// To do: 
+  // 1) two inputs from user: Composer and name of piece?
+    // All words MUST be capitalized.
+    // Composer MUST be in parenthesis and MUST be after piece (unless specific name like "Well Tempered Clavier", which worked)
+
+  // Problem: above format doesn't work for all pieces.  ex String_Quartet_1_Beethoven
+      //Solution: if no results, either print nothing or print "Please try entering your query differently ex..."?
+  // Problem: some videos from YouTube won't play after being loaded
+
+  // Problem: some videos aren't in English
+  // Problem: 
+
+
