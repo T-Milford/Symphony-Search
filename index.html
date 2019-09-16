@@ -6,17 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Classical Repertoire Researcher</title>
     <link rel="stylesheet" href="./main.css">
-    
-    
 </head>
 <body>
     
-    <h1>Classical Repertoire Finder</h1>
+    <h1 class="title">Classical Repertoire Researcher</h1>
     
+    <h3>For Classical Pieces:</h3>
+    <ul class="instructions">
+      <li>If title of piece is unique: do NOT include composer name.</li>
+      <li>...but if title of piece is NOT unique: do include composer name!</li>
+      <li>Finally: if title of piece is numerical, include "No. 1" etc in title.</li>
+    </ul>
+
     <form class="form">
-      <input type="text" class="text_input" name="text_input" placeholder="Composer? Name of piece?" required>
-      <button class="button">Go!</button>
-    </form>
+        <input type="text" class="composer_input" name="composer_input" placeholder="Composer?">
+        <input type="text" class="piece_input" name="piece_input" placeholder="Name of piece?" required>
+        <button class="classical_button">Go!</button>
+      </form>
+
+    <!-- <h3>For Non-Classical Music:</h3>
+    <ul class="instructions">
+      <li>Leave "composer" field blank.</li>
+    </ul>
+
+    <form class="form">
+        <input type="text" class="piece_input" name="album_input" placeholder="Album title?">
+        <button class="album_button">Go!</button>
+    </form> -->
+    
     
     <section class="content hidden"><section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
