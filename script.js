@@ -62,6 +62,7 @@ function wikiFormatter(composer, piece) {
     const baseWikiUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/'
     const finalWikiUrl = baseWikiUrl + queryWikiUrl;
     wikiFetcher(finalWikiUrl);
+    console.log(wikiFetcher);
   }
   else {
     let queryWikiUrl = `${piece}`.replace(/ /g, "_");
