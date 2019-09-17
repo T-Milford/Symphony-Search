@@ -13,30 +13,22 @@
     
     <h3>How to use:</h3>
     <ul class="instructions">
+      <li>Capitalize both composer name and piece titles.</li>
       <li>If title of piece is unique (i.e. "Well-Tempered Clavier"): do NOT include composer name.</li>
       <li>...but if title of piece is NOT unique (i.e. "Symphony No. 9"): DO include composer name!</li>
       <li>Finally: if title of piece is numerical, include "No. 1" etc in title.</li>
     </ul>
 
     <form class="form">
-        <input type="text" class="composer_input" name="composer_input" placeholder="Composer?">
-        <input type="text" class="piece_input" name="piece_input" placeholder="Name of piece?" required>
+        <input type="text" class="composer_input" name="composer_input" placeholder="Beethoven">
+        <input type="text" class="piece_input" name="piece_input" placeholder="Symphony No. 9" required>
         <button class="classical_button">Go!</button>
       </form>
-
-    <!-- <h3>For Non-Classical Music:</h3>
-    <ul class="instructions">
-      <li>Leave "composer" field blank.</li>
-    </ul>
-
-    <form class="form">
-        <input type="text" class="piece_input" name="album_input" placeholder="Album title?">
-        <button class="album_button">Go!</button>
-    </form> -->
     
+    <section class="wikiContent"></section>
+    <section class="youTubeContent"></section>
     
-    <section class="content hidden"><section>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>
