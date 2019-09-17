@@ -2,8 +2,7 @@
 
 $('.form').submit(event => {
     event.preventDefault();
-    $('.wikiContent').empty();
-    $('.youTubeContent').empty();
+    $('.wikiTitle, .wikiSummary, .wikiImage, .youTubeContent').empty();
     let composerQuery = $('.composer_input').val();
     let pieceQuery = $('.piece_input').val();
     formatQueries(composerQuery, pieceQuery);
@@ -49,11 +48,12 @@ function wikiDisplayer(json) {
   console.log(json);
   let wikiSummary = json.extract;
   let wikiTitle = json.titles.display;
-  $('.wikiContent').append(`<h1>${wikiTitle}</h1>`)
-  $('.wikiContent').append(`<p>${wikiSummary}</p>`)
+  $('.wikiTitle').append(`<h1>${wikiTitle}</h1>`)
   if (json.originalimage) {
-    $('.wikiContent').append(`<p><img src="${json.originalimage.source}"></p>`)
+    $('.wikiImage').append(`<p><img src="${json.originalimage.source}"></p>`)
   }
+  $('.wikiSummary').append(`<p>${wikiSummary}</p>`)
+  
 }
 
 
@@ -95,7 +95,6 @@ function wikiDisplayer(json) {
     console.log(json);
     for (i = 0; i < json.items.length; i++) {
       var id = json.items[i].id.videoId;
-      console.log(id);
       $('.youTubeContent').append(`<iframe width="400" height="300" src="https://www.youtube.com/embed/${id}"></iframe><br>`)
     }
   }

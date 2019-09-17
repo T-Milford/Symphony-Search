@@ -9,15 +9,19 @@
 </head>
 <body>
     
-    <h1 class="title">Classical Repertoire Researcher</h1>
+    <div class="title">
+      <h1>Repertoire Researcher</h1>
+    </div>
     
+  <div class="instructions">
     <h3>How to use:</h3>
-    <ul class="instructions">
+    <ul class="instructions_list">
       <li>Capitalize both composer name and piece titles.</li>
       <li>If title of piece is unique (i.e. "Well-Tempered Clavier"): do NOT include composer name.</li>
       <li>...but if title of piece is NOT unique (i.e. "Symphony No. 9"): DO include composer name!</li>
-      <li>Finally: if title of piece is numerical, include "No. 1" etc in title.</li>
+      <li>Finally: if title of piece is numerical, include "No. 1" (with period!) etc in title.</li>
     </ul>
+  </div>
 
     <form class="form">
         <input type="text" class="composer_input" name="composer_input" placeholder="Beethoven">
@@ -25,8 +29,12 @@
         <button class="classical_button">Go!</button>
       </form>
     
-    <section class="wikiContent"></section>
-    <section class="youTubeContent"></section>
+    <section class="content">
+      <div class="wikiTitle"></div>
+      <div class="wikiSummary"></div>
+      <div class="wikiImage"></div>
+      <div class="youTubeContent"></div>
+    </section>
     
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./script.js"></script>
