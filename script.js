@@ -34,14 +34,10 @@ function wikiFormatter(composer, piece) {
 function wikiFetcher(wikiUrl) {
   fetch(wikiUrl)
     .then(response => {
-      // if (response.type.disambiguation) {
-      //   $('.wikiTitle').append(
-      //   `<div class="instructions"><h3>Wikipedia needs more specific info.  Try adding composer name.</h3>  
-      //  </div>.`)
-      // }
       if (response.ok) {
         return response.json();
       }
+      //not sure how below line works
       throw new Error (response.statusText);
     })
     .then (responseJson => wikiDisplayer(responseJson))
@@ -62,7 +58,7 @@ function wikiDisplayer(json) {
   console.log(json);
   let wikiSummary = json.extract;
   let wikiTitle = json.titles.display;
-  $('.wikiTitle').append(`<h1>${wikiTitle}</h1>`)
+  $('.wikiTitle').append(`<h2>${wikiTitle}</h2>`)
   if (json.originalimage) {
     $('.wikiImage').append(`<p><img class="appendedImage" src="${json.originalimage.source}"></p>`)
   }

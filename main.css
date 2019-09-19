@@ -1,45 +1,66 @@
- @media only screen and (max-width: 480px) {
-  body {
-    box-sizing: border-box; 
-    font-size: 16px;
-  }
+ 
+body {
+  box-sizing: border-box; 
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  background: lightblue;
+}
 
-  h1, h2 {
-      font-family: Lato;
-  }
-    
-  .title {
-    text-align: center;
-  }
+h1, h2 {
+    font-family: Lato;
+}
+  
+.title {
+  text-align: center;
+}
 
-  form {
-    text-align: center;
-  }
+form {
+  text-align: center;
+}
 
-  input {
-    text-align: center;
-    font-size: 200%;
-    width: 380px;
-    height: 50px;
+input {
+  text-align: center;
+  font-size: 160%;
+  width: 370px;
+  height: 50px;
+}
 
-  }
+.classical_button {
+  margin-top: 25px;
+  width: 45px;
+  height: 45px;
+  font-size: 110%;
+}
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .appendedImage {
-    width: 400px;
-  }
+.wikiTitle {
+  margin-bottom: 0px; 
+}
 
-  /* .appendedSummaru {
+.appendedImage {
+  width: 400px;
+}
 
-  } */
+.appendedSummary {
+  display: block;
+  padding: 0px 20px 0px 20px;
+  margin: 0px 0px 20px 0;
+}
 
   /* .appendedVideo {
   
   } */
 
+
+/* Problem: Button text not aligned with button itself as screen grows */
+ @media only screen and (min-width: 481px) and (max-width: 800px) {
+   body {
+     font-size: 24px;
+   }
  }
