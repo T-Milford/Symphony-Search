@@ -27,13 +27,18 @@ function wikiFormatter(composer, piece) {
     let queryWikiUrl = `${piece}`.replace(/ /g, "_");
     const baseWikiUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/'
     const finalWikiUrl = baseWikiUrl + queryWikiUrl;
-    wikiFetcher(finalWikiUrl);
+    wikiFetcher(finalWikiUrl, piece);
   }
 } 
 
 function wikiFetcher(wikiUrl) {
   fetch(wikiUrl)
     .then(response => {
+      // if (response.type.disambiguation) {
+      //   $('.wikiTitle').append(
+      //   `<div class="instructions"><h3>Wikipedia needs more specific info.  Try adding composer name.</h3>  
+      //  </div>.`)
+      // }
       if (response.ok) {
         return response.json();
       }
@@ -41,7 +46,15 @@ function wikiFetcher(wikiUrl) {
     })
     .then (responseJson => wikiDisplayer(responseJson))
     .catch(err => {
-      $('.wikiContent').text(`No results found in WikiPedia with your input.  Try entering your request differently.`)
+      $('.wikiTitle').append(
+      `<div class="instructions"><h3>No results found in Wikipedia with your input.</h3>  
+      <h3>How to use:</h3>
+      <ul class="instructions_list">
+        <li>If title of piece is unique (i.e. "Well-Tempered Clavier"): do NOT include composer name.</li>
+        <li>...but if title of piece is NOT unique (i.e. "Symphony No. 9"): DO include composer name!</li>
+        <li>Finally: if title of piece is numerical, include "No. 1" (with period!) etc in title.</li>
+      </ul>
+    </div>.`)
     })
 }
 
