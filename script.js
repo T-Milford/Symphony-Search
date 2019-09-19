@@ -4,8 +4,9 @@ $('.form').submit(event => {
     event.preventDefault();
     $('.wikiTitle, .wikiSummary, .wikiImage, .youTubeContent').empty();
     let composerQuery = $('.composer_input').val();
+    capComposer = composerQuery.charAt(0).toUpperCase() + composerQuery.slice(1).toLowerCase();
     let pieceQuery = $('.piece_input').val();
-    formatQueries(composerQuery, pieceQuery);
+    formatQueries(capComposer, pieceQuery);
   });
 
   // function sends both parts of query to two formatting functions
@@ -50,12 +51,10 @@ function wikiDisplayer(json) {
   let wikiTitle = json.titles.display;
   $('.wikiTitle').append(`<h1>${wikiTitle}</h1>`)
   if (json.originalimage) {
-    $('.wikiImage').append(`<p><img src="${json.originalimage.source}"></p>`)
+    $('.wikiImage').append(`<p><img class="appendedImage" src="${json.originalimage.source}"></p>`)
   }
-  $('.wikiSummary').append(`<p>${wikiSummary}</p>`)
-  
+  $('.wikiSummary').append(`<p class="appendedSummary">${wikiSummary}</p>`)  
 }
-
 
   // function formats url for YouTube query
   function youTubeFormatter(composer, piece) {
@@ -95,14 +94,13 @@ function wikiDisplayer(json) {
     console.log(json);
     for (i = 0; i < json.items.length; i++) {
       var id = json.items[i].id.videoId;
-      $('.youTubeContent').append(`<iframe width="400" height="300" src="https://www.youtube.com/embed/${id}"></iframe><br>`)
+      $('.youTubeContent').append(`<iframe class="appendedVideo" width="400" height="300" src="https://www.youtube.com/embed/${id}"></iframe><br>`)
     }
   }
 
-
-
 // To do: 
-  // 0) ensure user input is capitalized
-  // 1) use Promise.all {fetchers}.... .then (load stuff) to prevent diff loading experiences?
+
   // 2) Create logic for "if no match (i.e. Bach + Well-Tempered Clavier), try without composer"
+  // if 
+
 
