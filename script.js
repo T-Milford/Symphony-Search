@@ -16,20 +16,19 @@ $('.form').submit(event => {
   }
 
 function wikiFormatter(composer, piece) {
-  if (composer) {
     let queryWikiUrl = `${piece} (${composer})`.replace(/ /g, "_");
-    const baseWikiUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/'
+    const baseWikiUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/symphony_No._'
     const finalWikiUrl = baseWikiUrl + queryWikiUrl;
     console.log(finalWikiUrl);
     wikiFetcher(finalWikiUrl);
-  }
-  else {
-    let queryWikiUrl = `${piece}`.replace(/ /g, "_");
-    const baseWikiUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/'
-    const finalWikiUrl = baseWikiUrl + queryWikiUrl;
-    wikiFetcher(finalWikiUrl, piece);
-  }
-} 
+  
+  // else {
+  //   let queryWikiUrl = `${piece}`.replace(/ /g, "_");
+  //   const baseWikiUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/'
+  //   const finalWikiUrl = baseWikiUrl + queryWikiUrl;
+  //   wikiFetcher(finalWikiUrl, piece);
+  // }
+}
 
 function wikiFetcher(wikiUrl) {
   fetch(wikiUrl)
@@ -43,12 +42,11 @@ function wikiFetcher(wikiUrl) {
     .then (responseJson => wikiDisplayer(responseJson))
     .catch(err => {
       $('.wikiTitle').append(
-      `<div class="instructions"><h3>No results found in Wikipedia with your input.</h3>  
-      <h3>How to use:</h3>
+      `<div class="instructions"><h3>No results found.</h3>  
+      <h3>Please:</h3>
       <ul class="instructions_list">
-        <li>If title of piece is unique (i.e. "Well-Tempered Clavier"): do NOT include composer name.</li>
-        <li>...but if title of piece is NOT unique (i.e. "Symphony No. 9"): DO include composer name!</li>
-        <li>Finally: if title of piece is numerical, include "No. 1" (with period!) etc in title.</li>
+        <li>Verify that your composer wrote a symphony of that number.</li>
+        <li>Verify that you have spelled his/her name correctly.</li>
       </ul>
     </div>.`)
     })
@@ -95,7 +93,7 @@ function wikiDisplayer(json) {
       })
       .then (responseJson => YouTubeDisplayer(responseJson))
       .catch(err => {
-        $('.youTubeContent').text(`Something went wrong with YouTube search.}`)})
+        $('.youTubeContent').text(`Something went wrong with YouTube search.`)})
   }
 
   // function updates page using YouTube JSON object
