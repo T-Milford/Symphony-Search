@@ -109,7 +109,8 @@ function wikiDisplayer(json) {
 
 // To do: 
 
-  // 2) Create logic for "if no match (i.e. Bach + Well-Tempered Clavier), try without composer"
-  // if 
+  // 1) Create logic for "if no match (i.e. Bach + Well-Tempered Clavier), try without composer"
+  // 2) Make placeholder text disappear when either field is clicked.
+  
 
 
