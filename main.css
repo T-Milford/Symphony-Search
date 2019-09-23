@@ -3,16 +3,18 @@ body {
   box-sizing: border-box; 
   font-size: 18px;
   font-family: 'Lato', sans-serif;
-  color: white;
-  background: rgb(13, 114, 3);
+  color: #413DC2;
+  background: #BEC23D;
+  
 }
 
-h1, h2 {
-    font-family: Lato;
+h1, h2, h3 {
+    font-family: 'Arvo', serif;
 }
   
 .title {
   text-align: center;
+  margin-top: 150px;
 }
 
 .instructions {
@@ -26,45 +28,65 @@ form {
 input {
   text-align: center;
   font-size: 160%;
-  width: 370px;
-  height: 50px;
+  width: 250px;
+  height: 40px;
 }
 
 .classical_button {
   margin-top: 25px;
   width: 45px;
   height: 45px;
-  font-size: 110%;
+  font-size: 100%;
+  background: white;
 }
 
 .content {
-  display: flex;
+  display: flex; 
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin-top: 100px;
 }
 
 .wikiTitle {
-  margin-bottom: 0px; 
+  margin: 0px 0px 0px 15px; 
+  text-align: center;
 }
 
 .appendedImage {
-  width: 400px;
+  width: 250px;
+  margin: auto;
 }
 
 .appendedSummary {
   display: block;
-  padding: 0px 20px 0px 20px;
-  margin: 0px 0px 20px 0;
+  padding: 0px 15px 0px 15px;
+  line-height: 150%;
+  /* margin: 0px 10px 0px 10px; */
 }
 
-  /* .appendedVideo {
+.instructions_list {
+  display: block;
+}
+
+.appendedVideo {
+  display: block;
+}
+
+.youTubeContent {
+  padding: 0px 15px 0px 15px;
   
-  } */
+}
 
-
-/* Problem: Button text not aligned with button itself as screen grows */
- @media only screen and (min-width: 481px) and (max-width: 800px) {
+@media only screen and (min-width: 481px) and (max-width: 800px) {
    body {
      font-size: 24px;
    }
+
+   
  }
+
+
+  /* c. Put YouTube videos side by side in > 800px
+ 4) Check for a11y access */
+ 
