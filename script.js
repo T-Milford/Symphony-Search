@@ -7,6 +7,10 @@ $('.form').submit(event => {
     capComposer = composerQuery.charAt(0).toUpperCase() + composerQuery.slice(1).toLowerCase();
     let pieceQuery = $('.piece_input').val();
     formatQueries(capComposer, pieceQuery);
+    
+    $('html,body').animate({
+      scrollTop: $(".content").offset().top},
+      'slow');
   });
 
   // function sends both parts of query to two formatting functions
@@ -23,7 +27,6 @@ function wikiFormatter(composer, piece) {
     wikiFetcher(finalWikiUrl);
 }
 
-// function formats url for YouTube query
   function youTubeFormatter(composer, piece) {
     const apiKey = "AIzaSyAqrx3UI21YR8ip4LI7dtGwW_cXa_qrg44";
     const params = {
@@ -42,7 +45,7 @@ function wikiFormatter(composer, piece) {
     YouTubeFetcher(finalYouTubeURL);
   }
 
-
+// gets JSON object for Wiki query
 function wikiFetcher(wikiUrl) {
   fetch(wikiUrl)
     .then(response => {
@@ -66,7 +69,7 @@ function wikiFetcher(wikiUrl) {
     })
 }
 
-// function gets JSON object for YouTube query
+// gets JSON object for YouTube query
 function YouTubeFetcher(url) {
   fetch(url)
     .then(response => {
@@ -80,6 +83,7 @@ function YouTubeFetcher(url) {
       $('.youTubeContent').text(`Quota limit exceeded for YouTube search.  Try again later.`)})
 }
 
+// updates page with Wiki content from associated JSON object
 function wikiDisplayer(json) {
   console.log(json);
   let wikiSummary = json.extract;
@@ -91,7 +95,7 @@ function wikiDisplayer(json) {
   $('.wikiSummary').append(`<p class="appendedSummary">${wikiSummary}</p>`)  
 }
 
-// function updates page using YouTube JSON object
+// updates page with YouTube content from associated JSON object
 function YouTubeDisplayer(json) {
     console.log(json);
     for (i = 0; i < json.items.length; i++) {

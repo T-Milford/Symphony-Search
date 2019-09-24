@@ -5,7 +5,6 @@ body {
   font-family: 'Lato', sans-serif;
   color: #413DC2;
   background: #BEC23D;
-  
 }
 
 h1, h2, h3 {
@@ -19,6 +18,7 @@ h1, h2, h3 {
 
 .instructions {
   text-align: center;
+  padding: 0px 20px 0px 20px;
 }
 
 form {
@@ -30,6 +30,7 @@ input {
   font-size: 160%;
   width: 250px;
   height: 40px;
+  border-radius: 5px;
 }
 
 .classical_button {
@@ -38,6 +39,7 @@ input {
   height: 45px;
   font-size: 100%;
   background: white;
+  border-radius: 5px;
 }
 
 .content {
@@ -62,7 +64,6 @@ input {
   display: block;
   padding: 0px 15px 0px 15px;
   line-height: 150%;
-  /* margin: 0px 10px 0px 10px; */
 }
 
 .instructions_list {
@@ -78,15 +79,83 @@ input {
   
 }
 
+
+
 @media only screen and (min-width: 481px) and (max-width: 800px) {
    body {
      font-size: 24px;
    }
 
-   
+   .instructions {
+    padding: 0px 30px 0px 30px;
+   }
+
+   input {
+    width: 300px;
+    height: 50px;
+   }
+
+   .classical_button {
+     width: 55px;
+     height: 55px;   
+  }
+
+   .appendedImage {
+     width: 350px;
+   }
+ 
+   .appendedSummary {
+    padding: 0px 55px 0px 55px;
+   }
+
+   .appendedVideo {
+     width: 300px;
+     height: 275px;
+   }
+ 
  }
 
 
-  /* c. Put YouTube videos side by side in > 800px
- 4) Check for a11y access */
+
+
+ @media only screen and (min-width: 801px){
+   body {
+     font-size: 28px;
+   }
+
+   .instructions {
+    padding: 0px 200px 0px 200px;
+   }
+
+   input {
+    width: 300px;
+    height: 50px;
+   }
+
+   .classical_button {
+     width: 65px;
+     height: 65px;
+   }
+
+   .appendedImage {
+     width: 400px;
+   }
+
+   .appendedSummary {
+    padding: 0px 75px 0px 75px;
+   }
+
+   .appendedVideo {
+    width: 400px;
+    height: 300px;
+  }
+
+ }
+
+
+  /* 
+    large size: 
+      Put (larger) YouTube videos side by side in > 800px
+
+  4) Check for a11y access */
  
