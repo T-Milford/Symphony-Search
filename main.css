@@ -68,6 +68,7 @@ input {
 
 .instructions_list {
   display: block;
+  text-align: left;
 }
 
 .appendedVideo {
