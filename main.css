@@ -31,6 +31,13 @@ input {
   width: 250px;
   height: 40px;
   border-radius: 5px;
+  cursor: pointer;
+  transition: ease-in-out, width .35s ease-in-out;
+}
+
+input:hover {
+  border: 2px #413DC2 solid;
+  width: 260px;
 }
 
 .classical_button {
@@ -40,6 +47,13 @@ input {
   font-size: 100%;
   background: white;
   border-radius: 5px;
+  cursor: pointer;
+  transition: ease-in-out, width .35s ease-in-out;
+}
+
+.classical_button:hover {
+  width: 75px;
+  border: 2px #413DC2 solid;
 }
 
 .content {

@@ -43,14 +43,13 @@ function wikiFormatter(composer, piece) {
     YouTubeFetcher(finalYouTubeURL);
   }
 
-// gets JSON object for Wiki query
+// gets JSON object for Wiki query.  If no results are returned, gives user instructions for refining query.
 function wikiFetcher(wikiUrl) {
   fetch(wikiUrl)
     .then(response => {
       if (response.ok) {
         return response.json();
       }
-      //not sure how below line works
       throw new Error (response.statusText);
     })
     .then (responseJson => wikiDisplayer(responseJson))
