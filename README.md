@@ -2,4 +2,4 @@ Symphony Search
 
 https://tmilford-ds.github.io/Symphony-Search/
 
-![Screenshot](https://gist.github.com/TMilford-DS/d2df1c3140dc4d9f807dabffdd76fca3#gistcomment-3037777)
+![Screenshot](https://github.com/TMilford-DS/Symphony-Search/blob/master/Screen%20Shot%202019-09-25%20at%207.11.31%20PM.png)
