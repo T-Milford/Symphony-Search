@@ -23,7 +23,6 @@ function wikiFormatter(composer, piece) {
     let queryWikiUrl = `${piece} (${composer})`.replace(/ /g, "_");
     const baseWikiUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/symphony_No._'
     const finalWikiUrl = baseWikiUrl + queryWikiUrl;
-    console.log(finalWikiUrl);
     wikiFetcher(finalWikiUrl);
 }
 
@@ -41,7 +40,6 @@ function wikiFormatter(composer, piece) {
     const queryString = Object.keys(params).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     .join('&');
     const finalYouTubeURL = youTubeBaseURL + queryString;
-    console.log(finalYouTubeURL);
     YouTubeFetcher(finalYouTubeURL);
   }
 
@@ -85,7 +83,6 @@ function YouTubeFetcher(url) {
 
 // updates page with Wiki content from associated JSON object
 function wikiDisplayer(json) {
-  console.log(json);
   let wikiSummary = json.extract;
   let wikiTitle = json.titles.display;
   $('.wikiTitle').append(`<h1>${wikiTitle}</h1>`)
@@ -97,7 +94,6 @@ function wikiDisplayer(json) {
 
 // updates page with YouTube content from associated JSON object
 function YouTubeDisplayer(json) {
-    console.log(json);
     for (i = 0; i < json.items.length; i++) {
       var id = json.items[i].id.videoId;
       $('.youTubeContent').append(`<iframe class="appendedVideo" width="250" height="200" src="https://www.youtube.com/embed/${id}"></iframe><br>`)
